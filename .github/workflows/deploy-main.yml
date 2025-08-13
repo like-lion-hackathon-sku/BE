@@ -36,7 +36,7 @@ jobs:
       - name: Copy Workspace
         run: |
           ssh EC2 'sudo mkdir -p /opt/app/time-attack'
-          ssh EC2 'sudo chown time:time /opt/app/time-attack'
+          ssh EC2 'sudo chown time:tiger /opt/app/time-attack'
           scp -r ./[!.]* EC2:/opt/app/time-attack
 
       - name: Install dependencies
@@ -52,7 +52,7 @@ jobs:
 
             [Service]
             User=${USER}
-            ExecStart=/usr/bin/npm run start --prefix Time-Attack
+            ExecStart=/usr/bin/docker build -t time-attack:BE /opt/app/time-attack;/usr/bin/docker rm -f time-attack-container;/usr/bin/docker run -p 3000:3000 -p 9229:9229 --name time-attack-container time-attack:BE
             Restart=always
 
             [Install]
