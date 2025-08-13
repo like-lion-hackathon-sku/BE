@@ -47,7 +47,8 @@ jobs:
             After=network.target
             
             [Service]
-            User=${USER}
+            User=time
+            Group=docker
             WorkingDirectory=/opt/app/time-attack
             ExecStart=/opt/app/time-attack/deploy.sh
             Restart=always
