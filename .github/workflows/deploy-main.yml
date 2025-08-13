@@ -45,10 +45,11 @@ jobs:
             echo "[Unit]
             Description=Time-Attack
             After=network.target
-
+            
             [Service]
             User=${USER}
-            ExecStart=/usr/bin/docker build -t time-attack:BE /opt/app/time-attack;/usr/bin/docker rm -f time-attack-container;/usr/bin/docker run -p 3000:3000 -p 9229:9229 --name time-attack-container time-attack:BE
+            WrokingDirectory=/opt/app/time-attack
+            ExecStart=sudo /usr/bin/docker build -t time-attack:BE .;sudo /usr/bin/docker rm -f time-attack-container;sudo /usr/bin/docker run -p 3000:3000 -p 9229:9229 --name time-attack-container time-attack:BE
             Restart=always
 
             [Install]
