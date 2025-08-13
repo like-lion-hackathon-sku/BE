@@ -39,10 +39,6 @@ jobs:
           ssh EC2 'sudo chown time:tiger /opt/app/time-attack'
           scp -r ./[!.]* EC2:/opt/app/time-attack
 
-      - name: Install dependencies
-        run: |
-          ssh EC2 'npm install --prefix /opt/app/time-attack'
-
       - name: Copy systemd service file
         run: |
           ssh EC2 '
