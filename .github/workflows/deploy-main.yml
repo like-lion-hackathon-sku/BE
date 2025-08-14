@@ -56,6 +56,9 @@ jobs:
             [Install]
             WantedBy=multi-user.target" | sudo tee /etc/systemd/system/Time-Attack.service
           '
+      - name: Build image on server
+        run: |
+          ssh EC2 'cd /opt/app/time-attack && sudo docker build -t time-attack:BE .'
 
       - name: Enable systemd service
         run: |
@@ -64,4 +67,4 @@ jobs:
 
       - name: Restart systemd service
         run: |
-          ssh EC2 'sudo systemctl restart Time-Attack'
+          ssh EC2 'sudo systemctl restart Time-Attack && sleep 2 && systemctl --no-pager --full -l status Time-Attack || true'
