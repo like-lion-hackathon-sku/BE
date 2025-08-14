@@ -64,4 +64,4 @@ jobs:
 
       - name: Restart systemd service
         run: |
-          ssh EC2 'sudo systemctl restart Time-Attack'
+          ssh EC2 'sudo systemctl restart Time-Attack' 
