@@ -58,7 +58,7 @@ jobs:
           '
       - name: Build image on server
         run: |
-          ssh EC2 'cd /opt/app/time-attack && sudo docker build -t time-attack:BE .'
+          ssh EC2 'cd /opt/app/time-attack && docker rm -f time-attack-container 2>/dev/null || true && sudo docker build -t time-attack:BE .'
 
       - name: Enable systemd service
         run: |
