@@ -5,7 +5,7 @@ import commentsRouter from '../comments/router/comments.router.js'
 const router = express.Router({ mergeParams: true })
 router.use('/:postId/comments', commentsRouter);
 router.get('/', (req, res) => {
-    res.send("hello! 0814-1030");
+    res.send("hello!");
 });
 router.delete('/:postId', (req, res) => {
     res.send("hello!");
