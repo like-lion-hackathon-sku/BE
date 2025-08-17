@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: dev-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: timeattack
+      MYSQL_DATABASE: my_dev_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./data:/var/lib/mysql
