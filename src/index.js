@@ -120,7 +120,7 @@ app.use('/api', commentRouter);    // /api/posts/:postId/comments
 /* ─────────────────────────────────────────────
  * Swagger UI & OpenAPI JSON (동적 생성)
  * ────────────────────────────────────────────*/
-app.use('/docs', swaggerUiExpress.serve, swaggerUiExpress.setup({}, {
+app.use('/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(undefined, {
   swaggerOptions: { url: '/openapi.json' },
 }));
 
